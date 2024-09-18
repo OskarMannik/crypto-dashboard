@@ -1,33 +1,38 @@
 const express = require('express');
-const cors = require('cors')
-const morgan = require('morgan')
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
+require('dotenv').config(); // To load environment variables from a .env file
 
-const app = express()
+const app = express();
+const PORT = 3000; // Set the port to 3000
 
-app.use(cors())
-app.use(morgan("coins"))
-
-//routes
-app.get("/coins", (req, res) => {
-  const url = "https://api.coinranking.com/v2/coins";
-  (async () => {
-    try {
-      await fetch(`${url}`, {
-        headers: { "x-access-token": `${process.env.COIN_RANKING_API_KEY}` }
-      }).then((response) => response.json())
-        .then((json) => {
-          console.log(json)
-          res.json(json)
-        })
-    } catch (error) {
-      console.log(error)
+// Endpoint to fetch cryptocurrency market data
+app.get('/coins', async (req, res) => {
+  const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
+  
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      'x-cg-pro-api-key': process.env.COIN_GECKO_API_KEY  // Ensure your API key is set in your environment
     }
-  })()
-})
+  };
 
-const port = process.env.PORT || 5000;
+  try {
+    const response = await fetch(url, options);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-app.listen(port, () => {
-  console.log(`Listening on Port, ${port}`)
-})
+    const data = await response.json();
+    res.json(data); // Send the data as JSON response to the client
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Failed to fetch data from CoinGecko API' });
+  }
+});
+
+// Start the server and listen on port 3000
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
