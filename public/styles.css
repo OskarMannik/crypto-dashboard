@@ -9,85 +9,26 @@
     box-sizing: border-box;
 }
 
-/* Navbar Container */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
+/* navbar starts */
+.sidebar {
+    background-image: url('public/image2.webp'); /* Adjust the path to reflect the correct location */
+    background-size: cover; /* Ensure the image covers the full sidebar */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+    height: 100vh; /* Full height of the viewport */
 }
-
-/* Logo Styling */
-.navbar .logo a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Navbar Links Styling */
-.navbar .nav-links {
-    list-style: none;
-    display: flex;
-}
-
-.navbar .nav-links li {
-    margin-left: 20px;
-}
-
-.navbar .nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease;
-}
-
-.navbar .nav-links li a:hover {
-    color: #ddd;
-}
-
-/* Hamburger Menu (for mobile) */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.hamburger .bar {
-    height: 3px;
-    width: 25px;
-    background-color: white;
-    margin: 4px 0;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .navbar .nav-links {
-        position: absolute;
-        right: 0;
-        height: 100vh;
-        top: 0;
-        background-color: #333;
-        flex-direction: column;
-        align-items: center;
-        width: 50%;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
+  /* @// Medium devices (tablets, 768px and up) */
+  @media (max-width: 768px) {
+    .sidebar {
+      position: static;
+      height: auto;
     }
-
-    .navbar .nav-links li {
-        margin: 30px 0;
+    .top-navbar {
+      position: static;
     }
+  }
+  /* navbar ends */
 
-    .hamburger {
-        display: flex;
-    }
 
-    /* Show the menu when active */
-    .navbar.active .nav-links {
-        transform: translateX(0%);
-    }
-}
 
 

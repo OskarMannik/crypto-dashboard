@@ -4,6 +4,7 @@ async function fetchCryptoData() {
         // Fetch data from your Express endpoint
         const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1&sparkline=false');
         const data = await response.json(); // Parse the JSON response
+        cryptoData = data;
         displayData(data); // Call function to display data
 
     } catch (error) {
@@ -14,25 +15,36 @@ async function fetchCryptoData() {
 
 // Function to display data on the webpage
 function displayData(coins) {
-    const container = document.getElementById('crypto-data');
+    const container = document.getElementById('data');
     container.innerHTML = ''; // Clear existing content
 
     // Loop through the coins and create HTML for each coin
     coins.forEach(coin => {
-        const coinDiv = document.createElement('div');
-        coinDiv.classList.add('coin');
-        coinDiv.innerHTML = `
-            <h2>${coin.name} (${coin.symbol.toUpperCase()})</h2>
-            <img src="${coin.image}" alt="${coin.name} logo" />
-            <p>Current Price: $${coin.current_price}</p>
-            <p>Market Cap: $${coin.market_cap.toLocaleString()}</p>
-            <p>Highest 24h: $${coin.high_24h}</p>
-            <p>Lowest 24h: $${coin.low_24h}</p>
-            <p>Price change 24h: $${coin.price_change_24h}</p>  
+        const row  = document.createElement('tr');
+        //coinDiv.classList.add('coin');
+        row.innerHTML = `
+            <td>${coin.name} (${coin.symbol.toUpperCase()})</td>
+            <td><img src="${coin.image}" alt="${coin.name} logo" width="30" height="30"></td>
+            <td>$${coin.current_price}</td>
+            <td>$${coin.market_cap.toLocaleString()}</td>
+            <td>$${coin.high_24h}</td>
+            <td>$${coin.low_24h}</td>
+            <td>$${coin.price_change_24h}</td>  
         `;
-        container.appendChild(coinDiv); // Append the newly created div to the container
+        container.appendChild(row); // Append the newly created div to the container
     });
 }
+
+function filterData() {
+    const searchInput = document.getElementById('filter').value.toLowerCase(); // Get search input and convert to lowercase
+    const filteredData = cryptoData.filter(coin => 
+        coin.name.toLowerCase().includes(searchInput) || 
+        coin.symbol.toLowerCase().includes(searchInput)
+    ); // Filter coins by name or symbol
+    displayData(filteredData); // Display filtered data in the table
+}
+
+document.getElementById('filter').addEventListener('keyup', filterData);
 
 // Call the function to fetch and display data when the page loads
 fetchCryptoData();
