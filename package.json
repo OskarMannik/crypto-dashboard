@@ -13,11 +13,19 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+<<<<<<< Updated upstream:package.json
     "express": "^4.17.1",
+=======
+    "express": "^4.20.0",
+>>>>>>> Stashed changes:backend/package.json
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+<<<<<<< Updated upstream:package.json
     "nodemon": "^2.0.7"
+=======
+    "nodemon": "^2.0.22"
+>>>>>>> Stashed changes:backend/package.json
   }
 }
