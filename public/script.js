@@ -44,6 +44,43 @@ function filterData() {
     displayData(filteredData); // Display filtered data in the table
 }
 
+async function sendMessage() {
+    const userMessage = document.getElementById('chat-input').value;
+    if (!userMessage) return;
+
+    // Append the user's message to the chat
+    appendMessage('user', userMessage);
+
+    try {
+        const response = await fetch('/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: userMessage }),
+        });
+
+        const data = await response.json();
+        const botReply = data.reply || "Sorry, I couldn't process your request.";
+        appendMessage('bot', botReply);
+    } catch (error) {
+        console.error('Error:', error);
+        appendMessage('bot', "Error connecting to the server.");
+    }
+
+    document.getElementById('chat-input').value = ''; // Clear input field
+}
+
+function appendMessage(sender, message) {
+    const chatBox = document.getElementById('chat-box');
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add(sender === 'user' ? 'message-user' : 'message-bot');
+    messageDiv.textContent = message;
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the latest message
+}
+
+
 document.getElementById('filter').addEventListener('keyup', filterData);
 
 // Call the function to fetch and display data when the page loads
