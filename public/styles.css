@@ -1,3 +1,8 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
 .coin img {
     width: 50px;
     height: 50px;
@@ -11,19 +16,8 @@
 
 /* navbar starts */
 
-
-  /* @// Medium devices (tablets, 768px and up) */
-  @media (max-width: 768px) {
-    .sidebar {
-      position: static;
-      height: auto;
-    }
-    
-    .top-navbar {
-      position: static;
-    }
-  }
-  body {
+body {
+    font-size: 1rem;
     background-image: url('image.png'); /* Replace with your image path */
     background-size: cover; /* Ensure the image covers the whole page */
     background-position: center;
@@ -32,14 +26,24 @@
 
 /* Optional: Styling to keep the table area clean (optional) */
 .container {
+    width: 80%;
+    margin: 0 auto;
     background-color: white; /* Keeps the content area clean */
     padding: 20px;
     border-radius: 10px; /* Rounded corners for a modern look */
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow to elevate the container */
 
 }
+
+header, footer {
+  width: 100%; /* Full width of the viewport */
+  margin: 0 auto;
+  padding: 0; /* Ensure no padding adds space */
+}
+
 /* Top Header */
 .header-top {
+  width: 100%;
   background-color: #f8f9fa; /* Light background for the top navbar */
   border-bottom: 1px solid #dee2e6;
 }
@@ -75,6 +79,9 @@
 /* Ensure the table has some padding on smaller screens */
 .table {
   margin-top: 20px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 /* Optional: Styling for table rows */
@@ -101,6 +108,95 @@
 .nav-link i {
   margin-right: 8px; /* Add some space between the icon and the text */
 }
+
+footer {
+  width: 100%;
+  position: relative;
+  margin: 0px;
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+footer.top {
+  display: grid;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #dee2e6;
+  background-color: #f8f9fa; /* Light background for the top navbar */
+}
+
+footer.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column-reverse;
+  gap: 8px;
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  background-color: white;
+  border-bottom: 1px solid #dee2e6;
+  
+  
+}
+
+footer.top .links {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.links-column {
+  display: grid;
+  gap: 10px;
+  text-align: center;
+}
+
+footer.top p {
+  margin: 0;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+footer.bottom p {
+  margin: 0;
+}
+
+footer.top .socials {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  translate: -50% 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 56px;
+}
+
+footer.top .socials > a {
+  font-size: 35px;
+}
+
+.copyright {
+  font-size: 13px;
+}
+
+/* @// Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+  
+  .top-navbar {
+    position: static;
+  }
+}
+
+
+
+
+
 
 
 
