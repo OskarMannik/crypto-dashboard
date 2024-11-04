@@ -1,8 +1,25 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: auto; /* Prevent horizontal scrolling */
+  display: flex;
+  flex-direction: column;
 }
+
+.wrapper {
+  flex-grow: 1; /* This ensures the wrapper takes up all available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Push content to the top of the page */
+}
+
+@font-face {
+  font-family: 'Heavitas';
+  src: url('Heavitas-nR1gO.ttf') format('truetype'); /* Adjust filename and format as needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
 .coin img {
     width: 50px;
     height: 50px;
@@ -17,6 +34,8 @@ html, body {
 /* navbar starts */
 
 body {
+    font-family: 'Heavitas', sans-serif;
+    flex: 1;
     font-size: 1rem;
     background-image: url('image.png'); /* Replace with your image path */
     background-size: cover; /* Ensure the image covers the whole page */
@@ -26,19 +45,32 @@ body {
 
 /* Optional: Styling to keep the table area clean (optional) */
 .container {
-    width: 80%;
-    margin: 0 auto;
-    background-color: white; /* Keeps the content area clean */
-    padding: 20px;
-    border-radius: 10px; /* Rounded corners for a modern look */
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow to elevate the container */
-
+  display: flex;
+  justify-content: center; /* Horizontally center the table */
+  align-items: center; /* Vertically center the table if needed */
+  width: 90%; /* 80% width relative to the viewport */
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%; <
+  box-sizing: border-box;
+  overflow-x: auto;
+  transition: all 0.3s ease; /* Smooth transitions when resizing */
 }
 
 header, footer {
   width: 100%; /* Full width of the viewport */
   margin: 0 auto;
   padding: 0; /* Ensure no padding adds space */
+}
+
+.header-title {
+  font-family: 'Heavitas', sans-serif;
+  font-size: 2.5rem; /* Increase font size */
+  font-weight: bold; /* Make the text bold */
+  color: #344034; /* Set color (dark grey) */
 }
 
 /* Top Header */
@@ -64,9 +96,9 @@ header, footer {
 }
 
 .logo-img {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
+  width: 75px;      
+  height: 75px;        
+  padding: 4px;        
 }
 
 /* Center the search bar */
@@ -78,10 +110,12 @@ header, footer {
 
 /* Ensure the table has some padding on smaller screens */
 .table {
-  margin-top: 20px;
   width: 100%;
-  max-width: 100%;
   margin: 0 auto;
+  word-wrap: break-word;
+  transition: all 0.3s ease;
+  table-layout: auto; /* Allow the table to adjust column widths dynamically */
+  font-size: 1rem; /* Default font size */
 }
 
 /* Optional: Styling for table rows */
@@ -93,20 +127,7 @@ header, footer {
 .table th, .table td {
   vertical-align: middle;
   text-align: center;
-}
-/* Navbar links (make sure they are visible) */
-.nav-link {
-    color: #343a40 !important; /* Ensure dark color for visibility */
-    display: flex;
-}
-
-.nav-link:hover {
-  color: #0056b3 !important; /* Optional: change color on hover */
-}
-
-/* FontAwesome icon styling (optional) */
-.nav-link i {
-  margin-right: 8px; /* Add some space between the icon and the text */
+  padding: 8px;
 }
 
 footer {
@@ -115,13 +136,16 @@ footer {
   margin: 0px;
   background-color: #f8f9fa;
   color: #343a40;
+  margin-top: auto;
 }
+
 
 footer.top {
   display: grid;
   padding-bottom: 40px;
   border-bottom: 1px solid #dee2e6;
   background-color: #f8f9fa; /* Light background for the top navbar */
+  
 }
 
 footer.bottom {
@@ -181,17 +205,80 @@ footer.top .socials > a {
   font-size: 13px;
 }
 
-/* @// Medium devices (tablets, 768px and up) */
-@media (max-width: 768px) {
-  .sidebar {
-    position: static;
-    height: auto;
+@media (min-width: 1200px) {
+  .container {
+      width: 70%; /* Adjust width to be more centered on large screens */
+      padding: 30px; /* Increase padding for more space on large screens */
   }
-  
-  .top-navbar {
-    position: static;
+
+  .table {
+      font-size: 1.2rem; /* Slightly larger font for better readability */
   }
 }
+
+
+/* Styles for phones and smaller devices */
+@media (max-width: 768px) {
+  .container {
+      width: 95%;
+      padding: 10px;
+      overflow-x: hidden;
+  }
+
+  /* Adjust navbar for mobile */
+  .navbar, .navbar-nav {
+      flex-direction: column;
+      padding: 5px 0;
+  }
+
+  .table {
+    font-size: 0.8rem;
+  }
+
+  .navbar-brand, .nav-link {
+      font-size: 0.85rem; /* Reduce navbar font size */
+  }
+
+  .header-bottom {
+      padding: 5px 0; /* Compact header for mobile */
+  }
+
+  /* Display only 4 columns: Logo, Current Price, Market Cap, Price Change 24h */
+  .table th:nth-child(1),
+  .table td:nth-child(1),
+  .table th:nth-child(2),
+  .table td:nth-child(2),
+  .table th:nth-child(3),
+  .table td:nth-child(3),
+  .table th:nth-child(4),
+  .table td:nth-child(4)
+   {
+      display: table-cell; /* Keep these columns */
+  }
+
+  .table th:nth-child(5),
+  .table td:nth-child(5),
+  .table th:nth-child(6),
+  .table td:nth-child(6),
+  .table th:nth-child(7),
+  .table td:nth-child(7){
+      display: none; /* Hide these columns on mobile */
+  }
+
+  .table {
+      font-size: 0.55rem; /* Smaller font size for mobile readability */
+      width: 95%;
+      border-collapse: collapse;
+  }
+
+  footer.bottom {
+      padding: 10px 0;
+      font-size: 0.85rem;
+  }
+}
+
+
+
 
 
 

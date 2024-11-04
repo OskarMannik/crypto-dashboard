@@ -39,37 +39,6 @@ app.get('/coins', async (req, res) => {
   }
 });
 
-//ChatBot
-
-app.post('/chat', async (req, res) => {
-  const userMessage = req.body.message.toLowerCase();
-
-  try {
-    
-      const response = await fetch(
-          'https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3',
-          {
-              method: 'POST',
-              headers: {
-                  'Authorization': `Bearer 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`,  // Replace with your Hugging Face API Key
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ inputs: `Human: ${userMessage}\nAI:` }),
-          }
-      );
-      const data = await response.json();
-      let botReply = "Sorry, I don't have an answer for that.";
-      if (data && data[0] && data[0].generated_text) {
-          botReply = data[0].generated_text;
-      }
-      res.json({ reply: botReply });
-
-  } catch (error) {
-      console.error('Error processing the request:', error);
-      res.status(500).json({ reply: 'Sorry, something went wrong!' });
-  }
-});
-
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
