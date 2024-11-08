@@ -2,7 +2,7 @@
 async function fetchCryptoData() {
     try {
         // Fetch data from your Express endpoint
-        const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1&sparkline=false');
+        const response = await fetch('http://your-backend-domain.com/coins'); 
         const data = await response.json(); // Parse the JSON response
         cryptoData = data;
         displayData(data); // Call function to display data

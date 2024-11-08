@@ -1,21 +1,21 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow-x: auto; /* Prevent horizontal scrolling */
+  overflow-x: auto;
   display: flex;
   flex-direction: column;
 }
 
 .wrapper {
-  flex-grow: 1; /* This ensures the wrapper takes up all available space */
+  flex-grow: 1; 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Push content to the top of the page */
+  justify-content: flex-start; 
 }
 
 @font-face {
   font-family: 'Heavitas';
-  src: url('Heavitas-nR1gO.ttf') format('truetype'); /* Adjust filename and format as needed */
+  src: url('Heavitas-nR1gO.ttf') format('truetype'); 
   font-weight: normal;
   font-style: normal;
 }
@@ -31,25 +31,21 @@ html, body {
     box-sizing: border-box;
 }
 
-/* navbar starts */
-
 body {
     font-family: 'Heavitas', sans-serif;
     flex: 1;
     font-size: 1rem;
-    background-image: url('image.png'); /* Replace with your image path */
-    background-size: cover; /* Ensure the image covers the whole page */
+    background-image: url('image.png'); 
+    background-size: cover; 
     background-position: center;
-    background-attachment: fixed; /* Makes background stay fixed while scrolling */
 }
 
-/* Optional: Styling to keep the table area clean (optional) */
 .container {
   display: flex;
-  justify-content: center; /* Horizontally center the table */
-  align-items: center; /* Vertically center the table if needed */
-  width: 90%; /* 80% width relative to the viewport */
-  margin: 0 auto;
+  justify-content: center; 
+  align-items: center; 
+  width: 90%; 
+  margin: auto;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
@@ -57,37 +53,34 @@ body {
   max-width: 100%;
   box-sizing: border-box;
   overflow-x: auto;
-  transition: all 0.3s ease; /* Smooth transitions when resizing */
+  transition: all 0.3s ease; 
 }
 
 header, footer {
-  width: 100%; /* Full width of the viewport */
+  width: 100%; 
   margin: 0 auto;
-  padding: 0; /* Ensure no padding adds space */
+  padding: 0; 
 }
 
 .header-title {
   font-family: 'Heavitas', sans-serif;
-  font-size: 2.5rem; /* Increase font size */
-  font-weight: bold; /* Make the text bold */
-  color: #344034; /* Set color (dark grey) */
+  font-size: 2.5rem; 
+  font-weight: bold;
+  color: #344034; 
 }
 
-/* Top Header */
 .header-top {
   width: 100%;
-  background-color: #f8f9fa; /* Light background for the top navbar */
+  background-color: #f8f9fa;
   border-bottom: 1px solid #dee2e6;
 }
 
-/* Bottom Header */
 .header-bottom {
   background-color: white;
   padding: 30px 0;
   border-bottom: 1px solid #dee2e6;
 }
 
-/* Logo Styling */
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -101,33 +94,19 @@ header, footer {
   padding: 4px;        
 }
 
-/* Center the search bar */
 .header-bottom form {
   max-width: 450px;
   max-height: 100px;
   width: 100%;
 }
 
-/* Ensure the table has some padding on smaller screens */
 .table {
   width: 100%;
   margin: 0 auto;
   word-wrap: break-word;
   transition: all 0.3s ease;
-  table-layout: auto; /* Allow the table to adjust column widths dynamically */
-  font-size: 1rem; /* Default font size */
-}
-
-/* Optional: Styling for table rows */
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-/* Optional: Styling for table text */
-.table th, .table td {
-  vertical-align: middle;
-  text-align: center;
-  padding: 8px;
+  table-layout: auto; 
+  font-size: 1rem; 
 }
 
 footer {
@@ -144,7 +123,7 @@ footer.top {
   display: grid;
   padding-bottom: 40px;
   border-bottom: 1px solid #dee2e6;
-  background-color: #f8f9fa; /* Light background for the top navbar */
+  background-color: #f8f9fa; 
   
 }
 
@@ -207,43 +186,46 @@ footer.top .socials > a {
 
 @media (min-width: 1200px) {
   .container {
-      width: 70%; /* Adjust width to be more centered on large screens */
-      padding: 30px; /* Increase padding for more space on large screens */
+      width: 90%; 
+      padding: 30px; 
   }
 
   .table {
-      font-size: 1.2rem; /* Slightly larger font for better readability */
+      font-size: 1.2rem; 
   }
 }
 
+@media (max-width: 1200px) {
+  .container {
+      width: 90%; 
+      padding: 30px; 
+  }
 
-/* Styles for phones and smaller devices */
-@media (max-width: 768px) {
+  .table {
+      font-size: 0.9rem; 
+  }
+}
+
+@media (max-width: 1000px) {
   .container {
       width: 95%;
       padding: 10px;
       overflow-x: hidden;
   }
 
-  /* Adjust navbar for mobile */
-  .navbar, .navbar-nav {
-      flex-direction: column;
-      padding: 5px 0;
-  }
-
   .table {
     font-size: 0.8rem;
   }
 
-  .navbar-brand, .nav-link {
-      font-size: 0.85rem; /* Reduce navbar font size */
+  .header-title {
+    font-size: 1rem; 
+    
   }
-
+  
   .header-bottom {
-      padding: 5px 0; /* Compact header for mobile */
+      padding: 5px 0; 
   }
 
-  /* Display only 4 columns: Logo, Current Price, Market Cap, Price Change 24h */
   .table th:nth-child(1),
   .table td:nth-child(1),
   .table th:nth-child(2),
@@ -253,7 +235,7 @@ footer.top .socials > a {
   .table th:nth-child(4),
   .table td:nth-child(4)
    {
-      display: table-cell; /* Keep these columns */
+      display: table-cell; 
   }
 
   .table th:nth-child(5),
@@ -262,11 +244,11 @@ footer.top .socials > a {
   .table td:nth-child(6),
   .table th:nth-child(7),
   .table td:nth-child(7){
-      display: none; /* Hide these columns on mobile */
+      display: none; 
   }
 
   .table {
-      font-size: 0.55rem; /* Smaller font size for mobile readability */
+      font-size: 0.55rem; 
       width: 95%;
       border-collapse: collapse;
   }

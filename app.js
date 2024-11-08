@@ -10,7 +10,10 @@ const PORT = 3000;
 app.use(express.static('public'));
 app.use(express.json());
 
-app.use(cors());
+// Restrict CORS to your front-end domain
+app.use(cors({
+  origin: ['https://your-frontend-domain.com']
+}));
 
 // Endpoint to fetch cryptocurrency market data
 app.get('/coins', async (req, res) => {
