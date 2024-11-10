@@ -2,7 +2,7 @@
 async function fetchCryptoData() {
     try {
         // Fetch data from your Express endpoint
-        const response = await fetch('http://your-backend-domain.com/coins'); 
+        const response = await fetch(COIN_CECKO_API_KEY); 
         const data = await response.json(); // Parse the JSON response
         cryptoData = data;
         displayData(data); // Call function to display data
