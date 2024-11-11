@@ -2,7 +2,7 @@
 async function fetchCryptoData() {
     try {
         // Fetch data from your Express endpoint
-        const response = await fetch('https://crypto-dashboard-website.vercel.app/');
+        const response = await fetch('https://crypto-dashboard-website.vercel.app/coins');
         const data = await response.json(); // Parse the JSON response
         cryptoData = data;
         displayData(data); // Call function to display data
