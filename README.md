@@ -24,5 +24,6 @@ Check out the live demo: [Cryptocurrency Dashboard](https://crypto-dashboard-web
 
 - **HTML**: For structuring the webpage.
 - **CSS**: For styling the application.
+- **Bootstrap**: Used it a bit to improve the styling of the application.
 - **JavaScript**: For fetching and displaying live data.
 - **[CoinGecko API](https://www.coingecko.com/en/api)**: To fetch live cryptocurrency data.
