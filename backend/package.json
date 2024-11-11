@@ -1,24 +1,19 @@
 {
-  "name": "backend",
+  "name": "crypto-dashboard",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "A cryptocurrency dashboard application",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.7",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.0",
-    "morgan": "^1.10.0",
-    "node-fetch": "^2.6.1"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
-  },
-  "description": ""
+    "nodemon": "^2.0.15"
+  }
 }

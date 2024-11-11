@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Restrict CORS to your front-end domain
 app.use(cors({
-  origin: [COIN_CECKO_API_KEY]
+  origin: '*' // Temporarily allow all origins for testing
 }));
 
 // Endpoint to fetch cryptocurrency market data
