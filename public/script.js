@@ -1,8 +1,7 @@
 // Fetch data from the API and display it on the webpage
 async function fetchCryptoData() {
     try {
-        // Fetch data from your Express endpoint
-        const response = await fetch('https://crypto-dashboard-website.vercel.app/coins');
+        const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1&sparkline=false');
         const data = await response.json(); // Parse the JSON response
         cryptoData = data;
         displayData(data); // Call function to display data
@@ -16,12 +15,10 @@ async function fetchCryptoData() {
 // Function to display data on the webpage
 function displayData(coins) {
     const container = document.getElementById('data');
-    container.innerHTML = ''; // Clear existing content
+    container.innerHTML = ''; 
 
-    // Loop through the coins and create HTML for each coin
     coins.forEach(coin => {
         const row  = document.createElement('tr');
-        //coinDiv.classList.add('coin');
         row.innerHTML = `
             <td>${coin.name} (${coin.symbol.toUpperCase()})</td>
             <td><img src="${coin.image}" alt="${coin.name} logo" width="30" height="30"></td>
