@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Restrict CORS to your front-end domain
 app.use(cors({
-  origin: '*' // Temporarily allow all origins for testing
+  origin: 'https://crypto-dashboard-website.vercel.app'
 }));
 
 // Endpoint to fetch cryptocurrency market data
